@@ -1,2 +1,2 @@
-# discord-pasta-bot
-literally all it does is send contents of a file line by line
+# Shit bot
+spams pasta and checks etf2l bans
