@@ -4,6 +4,7 @@ import os
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
+import ban_check
 
 load_dotenv()
 
@@ -14,9 +15,14 @@ bot = commands.Bot(command_prefix="\\")
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching,name="over the pasta dispenser"))
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching,name="Spam @BlastFM#3955 if something doesn't work"))
     print(f'{bot.user.name} ready')
 
+@bot.command(name="check_bans", help="Checks etf2l bans for a given user")
+async def check_etf2l(ctx,*,player_steam):
+    checker = ban_check.BanChecker()
+    await ctx.send(checker.checkBan(player_steam))
+    
 @bot.command(name="paste", help="Super secret admin paste tool,you see")
 @commands.has_any_role('Administrator')
 async def paster(ctx):
